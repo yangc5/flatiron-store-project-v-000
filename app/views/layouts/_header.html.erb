@@ -1,6 +1,10 @@
 <nav class="">
     <ul>
         <li> <%= link_to "Store Home", store_path %> </li>
+        <%if is_logged_in?%>
+            <li> <%= link_to "Log Out", logout_path, method: :delete %></li>
+        <% end %>
+
         <% if !!@cart %>
           <li> <%= link_to "Cart", cart_path(current_cart) %></li>
         <% end %>

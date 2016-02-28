@@ -1,2 +1,5 @@
 <h1><%= item.title %></h1>
 <h2>$ <%= item.price %></h2>
+<% if is_logged_in? %>
+<%= link_to "Add to cart", add_to_cart_path, method: :post%>
+<% end %>
