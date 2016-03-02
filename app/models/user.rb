@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   has_many :carts
 
   def current_cart
-    @current_cart ||= Cart.create(user_id: self.id)
+    if @current_cart.nil?
+      @current_cart = Cart.create(user_id: self.id)
+    end
+    return @current_cart
   end
 
   def current_cart=(cart)

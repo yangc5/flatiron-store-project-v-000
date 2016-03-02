@@ -12,10 +12,11 @@ class Cart < ActiveRecord::Base
   end
 
   def add_item(item_id)
-    line_item = LineItem.find_by(item_id: item_id, cart_id: self.id) || LineItem.new(item_id: item_id, cart_id: self.id)
+    line_item = line_items.find_by(item_id: item_id, cart_id: self.id) || line_items.build(item_id: item_id, cart_id: self.id)
     if line_item.persisted?
       line_item.quantity += 1
     end
+    line_item.save
     return line_item
   end
 end

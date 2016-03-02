@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       user = User.find_by(email: params[:email])
       return redirect_to login_path unless user.try(:authenticate, params[:password])
       session[:user_id] = user.id
+      session[:cart_id] = user.current_cart.id
       redirect_to store_path
     end
   end
