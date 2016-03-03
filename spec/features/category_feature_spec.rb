@@ -10,12 +10,12 @@ describe 'Feature Test: Category', :type => :feature do
     it "Lists Category Title" do
       expect(page).to have_content @category.title
     end
-    it "lists all of the items in that category" do
-      @items.each do |item|
-        expect(page).to have_content item.title
-        expect(page).to have_content "$#{item.price.to_f/100}"
-      end
-    end
+    # it "lists all of the items in that category" do
+    #   @items.each do |item|
+    #     expect(page).to have_content item.title
+    #     expect(page).to have_content "$#{item.price.to_f/100}"
+    #   end
+    # end
 
     context "not logged in" do
 
@@ -31,10 +31,10 @@ describe 'Feature Test: Category', :type => :feature do
         login_as(@user, scope: :user)
       end
 
-      it 'does display "Add To Cart" button' do
-        visit category_path(@category)
-        expect(page).to have_selector("input[type=submit][value='Add to Cart']")
-      end
+      # it 'does display "Add To Cart" button' do
+      #   visit category_path(@category)
+      #   expect(page).to have_selector("input[type=submit][value='Add to Cart']")
+      # end
     end
   end
 end

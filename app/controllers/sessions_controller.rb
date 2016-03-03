@@ -17,6 +17,9 @@ class SessionsController < ApplicationController
     unless session[:user_id].nil?
       session.delete :user_id
     end
+    unless session[:cart_id].nil?
+      session.delete :cart_id
+    end
     redirect_to login_path
   end
 

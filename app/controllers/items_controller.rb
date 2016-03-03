@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.where("inventory > ?", 0)
   end
 
   def show
